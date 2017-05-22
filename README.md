@@ -1,4 +1,4 @@
-# SonarQube Configuration
+# SonarQube Configuration for Android
 
 
 Classpath dependency which should be used with specific configuration
