@@ -1,0 +1,17 @@
+buildscript {
+    repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5-rc1"
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "project_name"
+        property "sonar.projectKey", "project_key"
+        property "sonar.projectVersion", version
+        property "sonar.java.binaries", "binaries_path"
+    }
+}
