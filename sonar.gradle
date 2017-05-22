@@ -1,0 +1,43 @@
+apply plugin: 'org.sonarqube'
+
+sonarqube {
+
+    def libraries = project.android.sdkDirectory.getPath() + "/platforms/android-22/android.jar,"
+
+    properties {
+        property "sonar.host.url", "sonar_address"
+        property "sonar.login", "login"
+        property "sonar.password", "paswd"
+        property "sonar.language", "java"
+        property "sonar.exclusions", ['**/R.class',
+                                      '**/R$*.class',
+                                      '**/*$ViewInjector*.*',
+                                      '**/*$ViewBinder*.*',
+                                      '**/*MembersInjector*.*',
+                                      '**/*Generated.java',
+                                      '**/*$Lambda$*.class',
+                                      '**/*$Builder*',
+                                      '**/*DaggerApplicationComponent*.class',
+                                      '**/android/support/**']
+
+        property "sonar.coverage.exclusions", ['**/data/model/**',
+                                               '**/android/support/**',
+                                               '**/*DetailsView.*',
+                                               '**/*Activity.*',
+                                               '**/*Fragment.*']
+        property "sonar.sourceEncoding", "ISO-8859-1"
+        property "sonar.sources", "src/main/java,src/main/res"
+        property "sonar.tests", "src/test/java"
+        property "sonar.libraries", libraries
+        property "sonar.java.binaries", "build/intermediates/classes/debug"
+        property "sonar.java.libraries", libraries
+        property "sonar.scm.provider", "git"
+
+        property "sonar.junit.reportsPath", "src/test/java"
+        property "sonar.java.test.libraries", libraries
+        property "sonar.jacoco.reportPath", "build/jacoco/testStagingDebugUnitTest.exec"
+
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.junit.reportsPath", "build/test-results/stagingDebug"
+    }
+}
